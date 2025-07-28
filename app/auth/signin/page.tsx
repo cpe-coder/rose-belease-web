@@ -1,5 +1,7 @@
-import signInLogo from "@/assets/images/hand.png";
+import signInLogo from "@/assets/images/signInLogo.png";
+import logo from "@/assets/logo/RoseBelEaseLogo.png";
 import SignInForm from "@/components/form/SignInForm";
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 const Signin = () => {
@@ -9,12 +11,39 @@ const Signin = () => {
 				<div className="w-[400px]">
 					<SignInForm />
 				</div>
-				<div className="w-[400px]">
+				<div className="w-[400px] h- relative items-center justify-center">
 					<Image
 						src={signInLogo}
 						alt="signInLogo"
-						className="rounded-tr-xl rounded-br-xl"
+						className="rounded-tr-xl relative rounded-br-xl"
 					/>
+					<div className="absolute flex top-0 h-full w-full border px-12 items-center justify-center">
+						<div className="flex space-y-6 backdrop-blur-[2px] flex-col border border-amber-50 rounded-md px-6 py-8">
+							<div className="flex flex-col items-start justify-center">
+								<Image src={logo} alt="logo" className="w-20" />
+								<div className="bg-slate-100  w-20 h-[1px]"></div>
+							</div>
+							<div className="space-y-32">
+								<div>
+									<p className="text-[10px] font-thin text-white">Hello!</p>
+									<h2 className="text-sm font-medium">
+										Ready to Book Your First Glow-Up?
+									</h2>
+									<p className="text-[10px] font-thin">
+										Sign up in seconds to get started - your beauty is priority
+									</p>
+								</div>
+								<div className="space-y-2">
+									<p className="text-[10px] font-thin text-white">
+										Sign up now and start your beauty journy.
+									</p>
+									<Button className="hover:cursor-pointer bg-transparent text-xs h-8  hover:bg-transparent px-6 border border-amber-50 text-white">
+										Sign up
+									</Button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
