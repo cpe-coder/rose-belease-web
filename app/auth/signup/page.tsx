@@ -3,7 +3,7 @@
 import logo from "@/assets/logo/RoseBelEaseLogo.png";
 import SignUpForm from "@/components/form/SignUpForm";
 import { Button } from "@/components/ui/button";
-import { signUpLogo } from "@/constant";
+import { signUpLogo } from "@/constant/index";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
