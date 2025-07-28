@@ -1,9 +1,9 @@
 "use client";
 
-import SignInLogo from "@/assets/images/signInLogo.png";
 import logo from "@/assets/logo/RoseBelEaseLogo.png";
 import SignInForm from "@/components/form/SignInForm";
 import { Button } from "@/components/ui/button";
+import { signInLogo } from "@/constant";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -17,7 +17,7 @@ const Signin = () => {
 				</div>
 				<div className="w-[400px] h- relative items-center justify-center">
 					<Image
-						src={SignInLogo}
+						src={signInLogo}
 						alt="signInLogo"
 						className="rounded-tr-xl relative rounded-br-xl"
 					/>

@@ -1,9 +1,9 @@
 "use client";
 
-import SignUpLogo from "@/assets/images/signUpLogo.png";
 import logo from "@/assets/logo/RoseBelEaseLogo.png";
 import SignUpForm from "@/components/form/SignUpForm";
 import { Button } from "@/components/ui/button";
+import { signUpLogo } from "@/constant";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -15,7 +15,7 @@ const Signin = () => {
 			<div className="w-auto flex rounded-xl shadow-2xl shadow-amber-50 border border-amber-50">
 				<div className="w-[400px] h- relative items-center justify-center">
 					<Image
-						src={SignUpLogo}
+						src={signUpLogo}
 						alt="signInLogo"
 						className="rounded-tr-xl relative rounded-br-xl"
 					/>
