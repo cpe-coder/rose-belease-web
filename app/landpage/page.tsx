@@ -1,6 +1,10 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 const Landpage = () => {
+	const router = useRouter();
 	return (
 		<div className="flex items-center justify-center h-screen w-full bg-[url('/cover.png')] bg-cover bg-no-repeat bg-fixed bg-center">
 			<div className="flex flex-col text-center gap-10">
@@ -13,10 +17,16 @@ const Landpage = () => {
 					</p>
 				</div>
 				<div className="flex gap-14">
-					<Button className="w-[250px] border bg-transparent hover:bg-slate-100 hover:cursor-pointer border-slate-900">
+					<Button
+						onClick={() => router.push("/auth/signup")}
+						className="w-[250px] border bg-transparent hover:bg-amber-100 hover:cursor-pointer border-slate-900"
+					>
 						Create Account
 					</Button>
-					<Button className="bg-slate-900 w-[250px] hover:bg-slate-700 hover:cursor-pointer text-white">
+					<Button
+						onClick={() => router.push("/auth/signin")}
+						className="bg-slate-900 w-[250px] hover:bg-slate-700 hover:cursor-pointer text-white"
+					>
 						Log in
 					</Button>
 				</div>
