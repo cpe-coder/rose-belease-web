@@ -1,9 +1,9 @@
 "use client";
 
+import SignUpLogo from "@/assets/images/signUpLogo.png";
 import logo from "@/assets/logo/RoseBelEaseLogo.png";
 import SignUpForm from "@/components/form/SignUpForm";
 import { Button } from "@/components/ui/button";
-import { SignUpLogo } from "@/constant";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
