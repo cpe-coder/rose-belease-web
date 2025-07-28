@@ -1,8 +1,9 @@
 "use client";
 
-// import { Google } from "@/constant/icon";
+import Google from "@/assets/icon/google.png";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ArrowRight, Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -51,10 +52,10 @@ const SignInForm = () => {
 	};
 
 	return (
-		<div className="px-auto flex  items-center justify-center mx-auto md:px-8 lg:px-14">
+		<div className="flex h-full w-full items-center justify-center mx-auto p-8">
 			<div className="flex flex-col items-center justify-center ">
-				<div className="flex flex-col items-center gap-1 pb-3 ">
-					<h1 className="font-bold text-slate-700 text-xl text-wrap">
+				<div className="flex flex-col items-center gap-1 pb-6 ">
+					<h1 className="font-bold text-slate-600 text-xl text-wrap">
 						Sign in to your Account
 					</h1>
 					<p className="text-slate-500 font-medium text-xs text-wrap">
@@ -67,12 +68,9 @@ const SignInForm = () => {
 						onSubmit={form.handleSubmit(onSubmit)}
 						className="w-full max-w-xs sm:max-w-sm md:w-[350px] px-2 sm:px-0"
 					>
-						<div className="space-y-2">
-							<Label
-								htmlFor="email"
-								className=" text-slate-500 text-sm sm:text-base"
-							>
-								Email address
+						<div className="space-y-1">
+							<Label htmlFor="email" className=" text-slate-600 text-xs">
+								Email address or Phone number
 							</Label>
 							<FormField
 								control={form.control}
@@ -81,8 +79,7 @@ const SignInForm = () => {
 									<FormItem>
 										<FormControl>
 											<Input
-												placeholder="Enter your email address"
-												className="rounded-md text-slate-500 bg-slate-200 w-full active:outline-none focus:outline-none text-sm sm:text-base"
+												className="rounded-md text-slate-600 bg-transparent border border-slate-400 hover:ring-0 active:ring-0 focus:ring-0 w-full active:outline-none focus:outline-none text-sm sm:text-base"
 												{...field}
 											/>
 										</FormControl>
@@ -90,10 +87,7 @@ const SignInForm = () => {
 									</FormItem>
 								)}
 							/>
-							<Label
-								htmlFor="password"
-								className="text-slate-500 text-sm sm:text-base"
-							>
+							<Label htmlFor="password" className="text-slate-600 text-xs">
 								Password
 							</Label>
 							<FormField
@@ -103,12 +97,12 @@ const SignInForm = () => {
 									<FormItem>
 										<FormControl>
 											<Input
-												placeholder="Enter your password"
-												className="rounded-md text-slate-500 bg-slate-200 w-full active:outline-none focus:outline-none text-sm sm:text-base"
+												className="rounded-md text-slate-600 bg-transparent w-full active:ring-0 focus:ring-0 hover:ring-0 active:outline-none  border-slate-400 border focus:outline-none text-sm sm:text-base"
 												type={isPasswordVisible ? "text" : "password"}
 												{...field}
 												passwordComponents={
 													<Button
+														type="button"
 														onClick={handleClick}
 														className="bg-transparent border-0 hover:bg-transparent focus:bg-transparent justify-end hover:cursor-pointer"
 													>
@@ -126,7 +120,7 @@ const SignInForm = () => {
 								)}
 							/>
 						</div>
-						<div className="flex justify-between gap-2 pt-4">
+						<div className="flex justify-between gap-2 pt-6">
 							<div className="flex items-center gap-1">
 								<div>
 									<Input
@@ -136,44 +130,43 @@ const SignInForm = () => {
 									/>
 								</div>
 								<div>
-									<Label className="text-slate-500" htmlFor="remember-me">
-										<span className="text-xs">Remember me for 30 days</span>
+									<Label className="text-slate-700" htmlFor="remember-me">
+										<span className="text-xs">Remember me</span>
 									</Label>
 								</div>
 							</div>
 							<div>
 								<Link href={"/forgot-password"}>
-									<p className="text-purple-600 text-xs hover:text-purple-900">
+									<p className="text-indigo-600 text-xs hover:text-indigo-900">
 										Forgot password?
 									</p>
 								</Link>
 							</div>
 						</div>
-
-						<Button
-							onClick={() => router.push("/profile")}
-							className="w-full mt-8 py-2 bg-gradient-to-r from-purple-500 to-indigo-500 hover:transition-all hover:duration-300 hover:bg-gradient-to-r hover:from-indigo-500 hover:to-purple-500 duration-300 transition-all hover:cursor-pointer rounded-md"
-							type="submit"
-						>
-							<span>Sign In to Dashboard</span>
-							<ArrowRight />
-						</Button>
+						<div className="flex py-6 items-center justify-center w-full">
+							<Button
+								className="flex px-28 py-1 items-center rounded-sm self-cen bg-slate-900 hover:bg-slate-800 text-white"
+								type="submit"
+							>
+								Log in
+							</Button>
+						</div>
 					</form>
 				</Form>
 				<div className=" w-full flex flex-row items-center justify-between gap-1">
-					<div className="w-full">
-						<p className="text-slate-500 text-center text-xs font-medium">
-							OR CONTINUE WITH
-						</p>
+					<div className="flex w-full items-center gap-3 justify-center">
+						<div className="w-24 bg-slate-500 h-[1px]"></div>
+						<p className="text-slate-500 text-center text-xs">or</p>
+						<div className="w-24 bg-slate-500 h-[1px]"></div>
 					</div>
 				</div>
-				<div className="w-full flex items-center">
+				<div className="w-full flex items-center justify-center pt-6">
 					<Button
-						className="w-full hover:cursor-pointer py-2 gap-4 bg-white border items-center justify-center border-slate-300 hover:bg-slate-100 hover:transition-all hover:duration-200 duration-200 transition-all rounded-md"
+						className="px-12 hover:cursor-pointer py-1 gap-2 bg-white border items-center justify-center border-slate-300 hover:bg-slate-100 hover:transition-all hover:duration-200 duration-200 transition-all rounded-sm"
 						type="button"
 					>
-						{/* <Image src={Google} alt="Google" className="w-4" /> */}
-						<span className="text-slate-500">Sign in with Google</span>
+						<Image src={Google} alt="Google" className="w-3" />
+						<span className="text-xs text-slate-600">Sign in with Google</span>
 					</Button>
 				</div>
 			</div>
