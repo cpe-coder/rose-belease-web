@@ -1,10 +1,14 @@
-import signInLogo from "@/assets/images/signInLogo.png";
+"use client";
+
 import logo from "@/assets/logo/RoseBelEaseLogo.png";
 import SignInForm from "@/components/form/SignInForm";
 import { Button } from "@/components/ui/button";
+import { SignInLogo } from "@/constant";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Signin = () => {
+	const router = useRouter();
 	return (
 		<div className="flex items-center justify-center p-10 bg-[url('/cover.png')] h-screen w-full bg-no-repeat bg-center bg-fixed bg-cover">
 			<div className="w-auto flex rounded-xl shadow-2xl shadow-amber-50 border border-amber-50">
@@ -13,7 +17,7 @@ const Signin = () => {
 				</div>
 				<div className="w-[400px] h- relative items-center justify-center">
 					<Image
-						src={signInLogo}
+						src={SignInLogo}
 						alt="signInLogo"
 						className="rounded-tr-xl relative rounded-br-xl"
 					/>
@@ -37,7 +41,10 @@ const Signin = () => {
 									<p className="text-[10px] font-thin text-white">
 										Sign up now and start your beauty journy.
 									</p>
-									<Button className="hover:cursor-pointer bg-transparent text-xs h-8  hover:bg-transparent px-6 border border-amber-50 text-white">
+									<Button
+										onClick={() => router.push("/auth/signup")}
+										className="hover:cursor-pointer bg-transparent text-xs h-8  hover:bg-transparent px-6 border border-amber-50 text-white"
+									>
 										Sign up
 									</Button>
 								</div>

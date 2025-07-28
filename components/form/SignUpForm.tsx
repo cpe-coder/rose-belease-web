@@ -4,7 +4,6 @@ import Google from "@/assets/icon/google.png";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Eye, EyeOff } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 import { useForm } from "react-hook-form";
 import z from "zod";
@@ -20,6 +19,10 @@ import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 
 const FormSchema = z.object({
+	firstName: z.string().min(1, "First name is required"),
+	lastName: z.string().min(1, "Last name is required"),
+	phoneNumber: z.string().min(1, "Phone number is required"),
+	birthday: z.string().min(1, "Birthday is required"),
 	email: z.string().min(1, "Email is required").email("Invalid email"),
 	password: z
 		.string()
@@ -27,11 +30,16 @@ const FormSchema = z.object({
 		.min(8, "Password must have than 8 characters"),
 });
 
-const SignInForm = () => {
+const SignUpForm = () => {
 	const form = useForm<z.infer<typeof FormSchema>>({
 		resolver: zodResolver(FormSchema),
 		defaultValues: {
+			firstName: "",
+			lastName: "",
+
 			email: "",
+			phoneNumber: "",
+			birthday: "",
 			password: "",
 		},
 	});
@@ -54,11 +62,8 @@ const SignInForm = () => {
 			<div className="flex flex-col items-center justify-center ">
 				<div className="flex flex-col items-center gap-1 pb-6 ">
 					<h1 className="font-bold text-slate-600 text-xl text-wrap">
-						Sign in to your Account
+						Create an account
 					</h1>
-					<p className="text-slate-500 font-medium text-xs text-wrap">
-						Enter your email and password to log in
-					</p>
 				</div>
 
 				<Form {...form}>
@@ -67,8 +72,53 @@ const SignInForm = () => {
 						className="w-full max-w-xs sm:max-w-sm md:w-[350px] px-2 sm:px-0"
 					>
 						<div className="space-y-1">
+							<div className="flex gap-2 items-center">
+								<div>
+									<Label
+										htmlFor="firstName"
+										className=" text-slate-600 text-xs"
+									>
+										First name
+									</Label>
+									<FormField
+										control={form.control}
+										name="firstName"
+										render={({ field }) => (
+											<FormItem>
+												<FormControl>
+													<Input
+														className="rounded-md text-slate-600 bg-transparent border border-slate-400 hover:ring-0 active:ring-0 focus:ring-0 w-full active:outline-none focus:outline-none text-sm sm:text-base"
+														{...field}
+													/>
+												</FormControl>
+												<FormMessage />
+											</FormItem>
+										)}
+									/>
+								</div>
+								<div>
+									<Label htmlFor="lastName" className=" text-slate-600 text-xs">
+										Last name
+									</Label>
+									<FormField
+										control={form.control}
+										name="lastName"
+										render={({ field }) => (
+											<FormItem>
+												<FormControl>
+													<Input
+														className="rounded-md text-slate-600 bg-transparent border border-slate-400 hover:ring-0 active:ring-0 focus:ring-0 w-full active:outline-none focus:outline-none text-sm sm:text-base"
+														{...field}
+													/>
+												</FormControl>
+												<FormMessage />
+											</FormItem>
+										)}
+									/>
+								</div>
+							</div>
 							<Label htmlFor="email" className=" text-slate-600 text-xs">
-								Email address or Phone number
+								Email address
 							</Label>
 							<FormField
 								control={form.control}
@@ -85,6 +135,51 @@ const SignInForm = () => {
 									</FormItem>
 								)}
 							/>
+							<div className="flex gap-2 items-center">
+								<div>
+									<Label
+										htmlFor="phoneNumber"
+										className=" text-slate-600 text-xs"
+									>
+										Phone number
+									</Label>
+									<FormField
+										control={form.control}
+										name="phoneNumber"
+										render={({ field }) => (
+											<FormItem>
+												<FormControl>
+													<Input
+														className="rounded-md text-slate-600 bg-transparent border border-slate-400 hover:ring-0 active:ring-0 focus:ring-0 w-full active:outline-none focus:outline-none text-sm sm:text-base"
+														{...field}
+													/>
+												</FormControl>
+												<FormMessage />
+											</FormItem>
+										)}
+									/>
+								</div>
+								<div>
+									<Label htmlFor="birthday" className=" text-slate-600 text-xs">
+										Birthday(MM/DD/YY)
+									</Label>
+									<FormField
+										control={form.control}
+										name="lastName"
+										render={({ field }) => (
+											<FormItem>
+												<FormControl>
+													<Input
+														className="rounded-md text-slate-600 bg-transparent border border-slate-400 hover:ring-0 active:ring-0 focus:ring-0 w-full active:outline-none focus:outline-none text-sm sm:text-base"
+														{...field}
+													/>
+												</FormControl>
+												<FormMessage />
+											</FormItem>
+										)}
+									/>
+								</div>
+							</div>
 							<Label htmlFor="password" className="text-slate-600 text-xs">
 								Password
 							</Label>
@@ -118,35 +213,12 @@ const SignInForm = () => {
 								)}
 							/>
 						</div>
-						<div className="flex justify-between gap-2 pt-6">
-							<div className="flex items-center gap-1">
-								<div>
-									<Input
-										type="checkbox"
-										id="remember-me"
-										className="w-4 h-4 p-0 m-0 bg-transparent active:bg-none focus:bg-none"
-									/>
-								</div>
-								<div>
-									<Label className="text-slate-700" htmlFor="remember-me">
-										<span className="text-xs">Remember me</span>
-									</Label>
-								</div>
-							</div>
-							<div>
-								<Link href={"/forgot-password"}>
-									<p className="text-indigo-600 text-xs hover:text-indigo-900">
-										Forgot password?
-									</p>
-								</Link>
-							</div>
-						</div>
 						<div className="flex py-6 items-center justify-center w-full">
 							<Button
-								className="flex px-28 py-1 items-center rounded-sm self-cen bg-slate-900 hover:bg-slate-800 text-white"
+								className="flex px-20 py-1 items-center rounded-sm self-cen bg-slate-900 hover:bg-slate-800 text-white"
 								type="submit"
 							>
-								Log in
+								Create an account
 							</Button>
 						</div>
 					</form>
@@ -164,7 +236,7 @@ const SignInForm = () => {
 						type="button"
 					>
 						<Image src={Google} alt="Google" className="w-3" />
-						<span className="text-xs text-slate-600">Sign in with Google</span>
+						<span className="text-xs text-slate-600">Continue with Google</span>
 					</Button>
 				</div>
 			</div>
@@ -172,4 +244,4 @@ const SignInForm = () => {
 	);
 };
 
-export default SignInForm;
+export default SignUpForm;
