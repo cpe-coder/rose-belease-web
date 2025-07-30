@@ -4,10 +4,15 @@ import { cn } from "@/lib/utils";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 	className?: string;
-	passwordComponents?: React.ReactNode;
+	additionalComponents?: React.ReactNode;
 }
 
-function Input({ className, passwordComponents, type, ...props }: InputProps) {
+function Input({
+	className,
+	additionalComponents,
+	type,
+	...props
+}: InputProps) {
 	return (
 		<div className="relative flex w-full items-center">
 			<input
@@ -21,7 +26,7 @@ function Input({ className, passwordComponents, type, ...props }: InputProps) {
 				)}
 				{...props}
 			/>
-			<div className="absolute right-0">{passwordComponents}</div>
+			<div className="absolute right-0">{additionalComponents}</div>
 		</div>
 	);
 }

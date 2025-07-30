@@ -1,3 +1,5 @@
+import Footer from "@/components/footer";
+import { Input } from "@/components/ui/input";
 import {
 	appointment,
 	belEaseLogo,
@@ -7,6 +9,7 @@ import {
 	profile,
 	RoseBelEaseLogo,
 } from "@/constant";
+import { Bell, Search, Settings } from "lucide-react";
 import Image from "next/image";
 
 export default function ProfilePage() {
@@ -64,7 +67,40 @@ export default function ProfilePage() {
 					<h1 className="text-orange-700 text-md">Logout</h1>
 				</div>
 			</aside>
-			<div className="h-full w-full">hello</div>
+			<div className="h-screen w-full flex flex-col">
+				<div className="flex-1 w-full p-8 gap-8">
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+						<div className="flex w-full items-center justify-between">
+							<div>
+								<p className="text-xs text-slate-400 font-medium">Hi Trisha!</p>
+								<h1 className="text-slate-900 font-medium text-2xl">
+									Welcome Back!
+								</h1>
+							</div>
+							<div className="flex items-center gap-2">
+								<Input
+									className="bg-white shadow-sm shadow-red-100 text-slate-700 font-medium"
+									additionalComponents={<Search color="gray" size={20} />}
+									placeholder="Search"
+								/>
+								<Bell color="#FFC300" size={25} />
+								<Settings color="black" size={25} />
+							</div>
+						</div>
+						<div className="bg-red-100 rounded-lg p-8 shadow-md shadow-slate-400">
+							<h1 className="text-slate-900 font-medium text-2xl">
+								Notifications
+							</h1>
+							<div></div>
+						</div>
+						<div></div>
+						<div></div>
+					</div>
+				</div>
+				<div>
+					<Footer />
+				</div>
+			</div>
 		</div>
 	);
 }

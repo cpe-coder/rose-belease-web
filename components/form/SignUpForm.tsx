@@ -193,7 +193,7 @@ const SignUpForm = () => {
 												className="rounded-md text-slate-600 bg-transparent w-full active:ring-0 focus:ring-0 hover:ring-0 active:outline-none  border-slate-400 border focus:outline-none text-sm sm:text-base"
 												type={isPasswordVisible ? "text" : "password"}
 												{...field}
-												passwordComponents={
+												additionalComponents={
 													<Button
 														type="button"
 														onClick={handleClick}
