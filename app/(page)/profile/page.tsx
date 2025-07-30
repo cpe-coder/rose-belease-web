@@ -69,31 +69,53 @@ export default function ProfilePage() {
 			</aside>
 			<div className="h-screen w-full flex flex-col">
 				<div className="flex-1 w-full p-8 gap-8">
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-						<div className="flex w-full items-center justify-between">
-							<div>
-								<p className="text-xs text-slate-400 font-medium">Hi Trisha!</p>
-								<h1 className="text-slate-900 font-medium text-2xl">
-									Welcome Back!
-								</h1>
+					<div className="grid grid-cols-1 col-span-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
+						<div className="flex flex-col gap-2">
+							<div className="flex w-full items-center justify-between">
+								<div>
+									<p className="text-xs text-slate-400 font-medium">
+										Hi Trisha!
+									</p>
+									<h1 className="text-slate-900 font-medium text-2xl">
+										Welcome Back!
+									</h1>
+								</div>
+								<div className="flex items-center gap-2">
+									<Input
+										className="bg-white shadow-sm shadow-red-100 text-slate-700 font-medium"
+										additionalComponents={<Search color="gray" size={20} />}
+										placeholder="Search"
+									/>
+									<Bell color="#FFC300" size={25} />
+									<Settings color="black" size={25} />
+								</div>
 							</div>
-							<div className="flex items-center gap-2">
-								<Input
-									className="bg-white shadow-sm shadow-red-100 text-slate-700 font-medium"
-									additionalComponents={<Search color="gray" size={20} />}
-									placeholder="Search"
-								/>
-								<Bell color="#FFC300" size={25} />
-								<Settings color="black" size={25} />
+							<div className="flex gap-8 p-6 items-center justify-center max-w-[1280px] bg-red-100 rounded-xl">
+								<div>
+									<Image
+										className="w-52 border-2 border-white rounded-full"
+										src={profile}
+										alt="profile"
+									/>
+								</div>
+								<div className="h-24 w-[3px] rounded-md bg-red-300"></div>
+								<div className="text-slate-900">
+									<h1 className="text-2xl font-medium">Juan Dela Cruz</h1>
+									<h2 className="text-base font-medium">delacruz@gmail.com</h2>
+									<h2 className="text-base font-medium">+63 912 345 6789</h2>
+									<p className="font-medium text-sm bg-[#D9D9D9] p-1 rounded-xs">
+										Membership Since: August 2023
+									</p>
+								</div>
 							</div>
 						</div>
-						<div className="bg-red-100 rounded-lg p-8 shadow-md shadow-slate-400">
+						<div className="bg-red-100 rounded-xl p-8 shadow-md shadow-slate-400">
 							<h1 className="text-slate-900 font-medium text-2xl">
 								Notifications
 							</h1>
 							<div></div>
 						</div>
-						<div></div>
+
 						<div></div>
 					</div>
 				</div>
